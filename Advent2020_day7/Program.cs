@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 
 class BagRule{
     private string Bagname;
@@ -25,17 +23,6 @@ class BagRule{
 
     public bool getContain(){
         return containBag;
-    }
-
-    public bool isInDictionary(string searchstring){
-
-        foreach(var dict in Bags){
-            if(searchstring == dict.Key){
-                return true;
-            }
-        }
-
-        return false;
     }
 
     public string GetName(){
@@ -66,7 +53,6 @@ class BagRule{
                                 Count += tmpcount;
                                 break;
                             }
-                            
                             
                         }
                     }
@@ -103,24 +89,21 @@ class BagRule{
         foreach(string line in lines){
 
             string searchstring = "contain";
-
             int endfirst =line.IndexOf(searchstring);
 
-            int startsecond = endfirst + searchstring.Length;
-
-            string bagruleName = line.Substring(0,endfirst-2);
-            string containingBags = line.Substring(startsecond);
+            string bagruleName = line.Substring(0,endfirst-2); //minus space and s in bags
+            string containingBags = line.Substring(endfirst + searchstring.Length);
 
             string[] baglist = containingBags.Split(',');
 
+            //remove new line of last element
             baglist[baglist.Length-1] = baglist[baglist.Length-1].Substring(0,baglist[baglist.Length-1].Length-1);
 
             var bagtypeslist = new Dictionary<string,int>();
             for(int i = 0; i< baglist.Length; i++){
-                string tmp = baglist[i].Substring(1);
-                int searchspace = tmp.IndexOf(' '); //need good format to convert to int, so skip first space and last around number
-                string numberstring = tmp.Substring(0,searchspace);
-                string bagtype = tmp.Substring(searchspace+1,tmp.Length-searchspace-1);                
+                int searchspace = baglist[i].IndexOf(' ',1); //need good format to convert to int, so skip first space and last around number
+                string numberstring = baglist[i].Substring(1,searchspace);
+                string bagtype = baglist[i].Substring(searchspace+1,baglist[i].Length-(searchspace+1));                
 
                 int nbrOfBags;
                 if(Char.IsDigit(numberstring[0])){
@@ -141,8 +124,6 @@ class BagRule{
             bagruleList.Add(new BagRule(bagruleName,bagtypeslist));
 
         }
-
-        
 
         string searchString = "shiny gold bag";
 
