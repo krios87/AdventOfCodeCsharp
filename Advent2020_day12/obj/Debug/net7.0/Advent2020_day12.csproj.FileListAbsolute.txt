@@ -1,0 +1,15 @@
+C:\Users\Kristofer Rosquist\Desktop\HoT\Training\Useful things\C#\Advent2020_day12\obj\Debug\net7.0\Advent2020_day12.csproj.AssemblyReference.cache
+C:\Users\Kristofer Rosquist\Desktop\HoT\Training\Useful things\C#\Advent2020_day12\obj\Debug\net7.0\Advent2020_day12.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kristofer Rosquist\Desktop\HoT\Training\Useful things\C#\Advent2020_day12\obj\Debug\net7.0\Advent2020_day12.AssemblyInfoInputs.cache
+C:\Users\Kristofer Rosquist\Desktop\HoT\Training\Useful things\C#\Advent2020_day12\obj\Debug\net7.0\Advent2020_day12.AssemblyInfo.cs
+C:\Users\Kristofer Rosquist\Desktop\HoT\Training\Useful things\C#\Advent2020_day12\obj\Debug\net7.0\Advent2020_day12.csproj.CoreCompileInputs.cache
+C:\Users\Kristofer Rosquist\Desktop\HoT\Training\Useful things\C#\Advent2020_day12\bin\Debug\net7.0\Advent2020_day12.exe
+C:\Users\Kristofer Rosquist\Desktop\HoT\Training\Useful things\C#\Advent2020_day12\bin\Debug\net7.0\Advent2020_day12.deps.json
+C:\Users\Kristofer Rosquist\Desktop\HoT\Training\Useful things\C#\Advent2020_day12\bin\Debug\net7.0\Advent2020_day12.runtimeconfig.json
+C:\Users\Kristofer Rosquist\Desktop\HoT\Training\Useful things\C#\Advent2020_day12\bin\Debug\net7.0\Advent2020_day12.dll
+C:\Users\Kristofer Rosquist\Desktop\HoT\Training\Useful things\C#\Advent2020_day12\bin\Debug\net7.0\Advent2020_day12.pdb
+C:\Users\Kristofer Rosquist\Desktop\HoT\Training\Useful things\C#\Advent2020_day12\obj\Debug\net7.0\Advent2020_day12.dll
+C:\Users\Kristofer Rosquist\Desktop\HoT\Training\Useful things\C#\Advent2020_day12\obj\Debug\net7.0\refint\Advent2020_day12.dll
+C:\Users\Kristofer Rosquist\Desktop\HoT\Training\Useful things\C#\Advent2020_day12\obj\Debug\net7.0\Advent2020_day12.pdb
+C:\Users\Kristofer Rosquist\Desktop\HoT\Training\Useful things\C#\Advent2020_day12\obj\Debug\net7.0\Advent2020_day12.genruntimeconfig.cache
+C:\Users\Kristofer Rosquist\Desktop\HoT\Training\Useful things\C#\Advent2020_day12\obj\Debug\net7.0\ref\Advent2020_day12.dll
