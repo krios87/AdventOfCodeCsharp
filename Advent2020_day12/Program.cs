@@ -56,8 +56,6 @@ class DAY9
 
 
             //part 2:
-
-
             
             switch(letter){
 
@@ -85,8 +83,8 @@ class DAY9
                 default: //L or R:
 
                     if(amount == 180){
-                        WaypointX = -1 * Math.Sign(WaypointX)*Math.Abs(WaypointX);
-                        WaypointY = -1 * Math.Sign(WaypointY)*Math.Abs(WaypointY);
+                        WaypointX = -1 * WaypointX;
+                        WaypointY = -1 * WaypointY;
 
                     } else {
                         int tmp = WaypointX;
