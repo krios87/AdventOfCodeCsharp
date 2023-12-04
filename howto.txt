@@ -1,0 +1,5 @@
+https://www.youtube.com/watch?v=RdFgAXUvhYY
+
+C# have finalizers (equivalent to destructor in c++),
+but developers cannot control when they should be called
+https://intellitect.com/blog/finalizers-in-csharp/
