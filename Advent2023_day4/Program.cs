@@ -27,7 +27,7 @@ class DAY4
             totalcount += countwinners[i] > 0 ? Math.Pow(2,countwinners[i]-1) : 0;            
         }
             
-        Console.WriteLine("total part 1: " + totalcount);
+        Console.WriteLine("total part 1: " + totalcount);  
 
         //Count cards part 2:
         int[] copies =new int[lines.Length];
