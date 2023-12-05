@@ -30,18 +30,18 @@ class DAY4
         Console.WriteLine("total part 1: " + totalcount);
 
         //Count cards part 2:
-        int[] multipliers = Enumerable.Repeat(1, lines.Length).ToArray();
+        int[] copies =new int[lines.Length];
 
         for(int i = 0; i< lines.Length; i++){
-            for(int j=0; j< multipliers[i]; j++){
+            for(int j=0; j<= copies[i]; j++){
                 if(countwinners[i]>0){                
-                    for(int iCopies=1; iCopies<=countwinners[i]; iCopies++){                    
-                        multipliers[i+iCopies]+= iCopies < lines.Length ? 1 : 0;               
+                    for(int iWinners=1; iWinners<=countwinners[i]; iWinners++){                    
+                        copies[i+iWinners]+= iWinners < lines.Length ? 1 : 0;               
                     }     
                 }      
             }            
         }
-        Console.WriteLine("part2 sum cards: "+ multipliers.Sum());
+        Console.WriteLine("part2 sum copies + original cards: "+ (copies.Sum() + lines.Length));
     }    
 
     
