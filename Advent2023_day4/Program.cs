@@ -17,7 +17,7 @@ class DAY4
         }
         
         int[] countwinners = new int[lines.Length];
-        //count part 1 
+        //count part 1
         double totalcount = 0;
         for(int i = 0; i< lines.Length; i++){
             countwinners[i] = 0;
