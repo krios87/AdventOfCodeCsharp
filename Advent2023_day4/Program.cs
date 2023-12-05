@@ -24,7 +24,7 @@ class DAY4
             foreach(int winning in winningNumbers[i]){
                 countwinners[i] += myNumbers[i].Contains(winning) ? 1 : 0;
             }
-            totalcount += countwinners[i] > 0 ? Math.Pow(2,countwinners[i]-1) : 0;            
+            totalcount += countwinners[i] > 0 ? Math.Pow(2,countwinners[i]-1) : 0;        
         }
             
         Console.WriteLine("total part 1: " + totalcount);  
