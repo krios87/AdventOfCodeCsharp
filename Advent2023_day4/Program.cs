@@ -43,6 +43,4 @@ class DAY4
         }
         Console.WriteLine("part2 sum copies + original cards: "+ (copies.Sum() + lines.Length));
     }    
-
-    
 }
