@@ -8,8 +8,8 @@ using System.Runtime.CompilerServices;
 
 class DAY15
 {
-    public static long hashAlgoritm(string asciiString){
-        long AsciiValue = 0;
+    public static int hashAlgoritm(string asciiString){
+        int AsciiValue = 0;
         foreach(char asciiChar in asciiString){
             AsciiValue = (AsciiValue + asciiChar)*17%256;
         }
@@ -18,26 +18,20 @@ class DAY15
     static void Main(string[] args)
     {        
         string[] asciiStrings = File.ReadAllLines("../../../Advent/2023_day15.txt")[0].Split(',',StringSplitOptions.RemoveEmptyEntries);        
-        long CountSum = 0;
+        int CountSum1 = 0;
         foreach(string asciiString in asciiStrings){
-            CountSum += hashAlgoritm(asciiString);
+            CountSum1 += hashAlgoritm(asciiString);
         }
-        Console.WriteLine("count part 1: " + CountSum);
-
+        Console.WriteLine("count part 1: " + CountSum1);
 
         //part 2      
-
         OrderedDictionary[] boxes = new OrderedDictionary[256];
 
         for(int i = 0; i< asciiStrings.Length; i++){
-            string label = "";
-            int lenseStrength = 0;
-            long boxnumber = 0;
-
             if(asciiStrings[i].Contains('=')){
-                label = asciiStrings[i].Split('=')[0];
-                lenseStrength = Convert.ToInt32(asciiStrings[i].Split('=')[1]);
-                boxnumber = hashAlgoritm(label);
+                string label = asciiStrings[i].Split('=')[0];
+                int lenseStrength = Convert.ToInt32(asciiStrings[i].Split('=')[1]);
+                int boxnumber = hashAlgoritm(label);
                 if(boxes[boxnumber] == null){
                     boxes[boxnumber] = new OrderedDictionary(9);
                 }
@@ -48,27 +42,25 @@ class DAY15
                     boxes[boxnumber].Add(label,lenseStrength);
                 }                
             }
-            else if(asciiStrings[i].Contains('-')){
-                label = asciiStrings[i].Split('-')[0];
-                boxnumber = hashAlgoritm(label);
-                if(boxes[boxnumber] == null){
-                    boxes[boxnumber] = new OrderedDictionary(9);
-                }
-                boxes[boxnumber].Remove(label);                
+            else{
+                string label = asciiStrings[i].Split('-')[0];
+                int boxnumber = hashAlgoritm(label);
+                boxes[boxnumber]?.Remove(label);
             }
         }
 
-        int count = 0;
-         for(int j = 0; j<256; j++){
+        int count2 = 0;
+         for(int j = 0; j<boxes.Length; j++){
             if(boxes[j] != null){
                 int slot = 1;
-                foreach(DictionaryEntry lense in boxes[j]){      
-                    count += (j+1)* slot * (int) lense.Value;   
+                foreach(DictionaryEntry lense in boxes[j]){
+                    if(lense.Value is not null)
+                        count2 += (j + 1) * slot * (int)lense.Value;
                     slot++;                 
                 }
             }
          }
 
-         Console.WriteLine("count part 2: " + count);
+         Console.WriteLine("count part 2: " + count2);
     }
 }
