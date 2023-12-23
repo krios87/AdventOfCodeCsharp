@@ -17,7 +17,7 @@ class DAY6
         
     }
     static void Main(string[] args)
-    {        
+    {
         string[] lines = File.ReadAllLines("../../../Advent/2023_day6.txt");
         long[] Times = lines[0].Split(':')[1].Split(' ',StringSplitOptions.RemoveEmptyEntries).Select(Int64.Parse).ToArray();
         long[] Distance = lines[1].Split(':')[1].Split(' ',StringSplitOptions.RemoveEmptyEntries).Select(Int64.Parse).ToArray();
@@ -29,7 +29,7 @@ class DAY6
 
         //part2:
         long TotalTime = Convert.ToInt64(new string(lines[0].Where(c => Char.IsDigit(c)).ToArray()));
-        long TotalDistance = Convert.ToInt64(new string(lines[1].Where(c => Char.IsDigit(c)).ToArray()));        
+        long TotalDistance = Convert.ToInt64(new string(lines[1].Where(c => Char.IsDigit(c)).ToArray()));
         Console.WriteLine("total part 2: " + CountNbrBeatRecord(TotalTime,TotalDistance));
-    }        
+    }
 }

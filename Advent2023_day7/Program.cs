@@ -23,7 +23,7 @@ public class CustomComparer : IComparer<KeyValuePair<string, long>> {
     private string pattern3 =@"(.)(.*\1){2}";
     private string pattern2 =@"(.)(.*\1){1}";
 
-    private string patternNewpair = @"([^X])(.*\1){1}";//replace X with something
+    private string patternNewpair = @"([^X])(.*\1){1}";//replace X with something to find a pair except of type 'X'
 
     private int getCardHandType(string ?hand){
         
@@ -34,7 +34,7 @@ public class CustomComparer : IComparer<KeyValuePair<string, long>> {
             return 6;
         }
 
-        Regex rex4 = new Regex(pattern4);
+        Regex rex4 = new(pattern4);
         Match match4 = rex4.Match(hand ?? "");
 
         if(match4.Success){
@@ -51,8 +51,8 @@ public class CustomComparer : IComparer<KeyValuePair<string, long>> {
             Match matchFull = rexFull.Match(hand ?? "");            
             return matchFull.Success ? 4 : 3;
         }
-
-        Regex rex2 = new Regex(pattern2);
+        
+        Regex rex2 = new(pattern2);
         Match match2 = rex2.Match(hand ?? "");
 
         if(match2.Success){
@@ -62,14 +62,15 @@ public class CustomComparer : IComparer<KeyValuePair<string, long>> {
             Match match2pair = rex2pair.Match(hand ?? "");
             return match2pair.Success ? 2 : 1;
         }
-
-
         return 0; 
     }
 
     private int getcardValue(string ?handA, string ?handB)
     {
-        for(int i =0; i<handA.Length;i++){
+        if(handB == null){
+            return 0;
+        }
+        for(int i =0; i<handA?.Length;i++){
             if(getcard(handA[i]) > getcard(handB[i])){
                 return -1;
             }
@@ -81,41 +82,31 @@ public class CustomComparer : IComparer<KeyValuePair<string, long>> {
     }
 
     private int getcard(char c){
-
         return c switch 
         {
             'A' => 14, 'K' => 13, 'Q' =>  12, 'J' => 11, 'T' => 10,
             '9' =>  9, '8' => 8, '7' => 7, '6' =>  6, '5' =>  5, '4' =>  4, '3' =>  3, '2' =>  2, _ => -1
         };
     }
-
 }
-
 
 class DAY7
 {
     static void Main(string[] args)
     {        
-        string[] lines = File.ReadAllLines("../../../Advent/2023_day7.txt");       
-
+        string[] lines = File.ReadAllLines("../../../Advent/2023_day7.txt");
         List<KeyValuePair<string,long>> hands = new List<KeyValuePair<string,long>>();
-
         foreach(string line in lines){
             hands.Add(new KeyValuePair<string, long>(line.Split(' ')[0],Convert.ToInt64(line.Split(' ')[1])));
-        }
-
-        IComparer<KeyValuePair<string, long>> customComparer = new CustomComparer();
+        }      
         
-        // Use List.Sort with the custom comparer
-        hands.Sort(customComparer);
-
+        hands.Sort(new CustomComparer());
         long count = 0;
         long index = hands.Count;
         foreach(var hand in hands){
             count += index * hand.Value;
             index--;
         }
-
         Console.WriteLine("count: " + count);
     }
 
