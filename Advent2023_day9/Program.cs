@@ -3,19 +3,11 @@
 class DAY9
 {
     public static int calcDiff(int[] prevArray, int prevArraySize, bool part1){
-        int currentArraySize = prevArraySize-1;
-        int[] currentArray = new int[currentArraySize];
-        bool isEqual = true;
-        for(int i = 0; i< currentArraySize; i++){
-            currentArray[i] = prevArray[i+1]-prevArray[i];
-            if(i>0 && currentArray[i] != currentArray[i-1]){
-                isEqual = false;
-            }
-        }
-        int arrayElement = part1 ? (currentArraySize-1) : 0; //select last for part1 and first for part2        
-
+        int[] currentDiffArray = prevArray.Skip(1).Select((x, index) => x - prevArray[index]).ToArray(); //create array from difference of array element from input
+        bool isEqual = currentDiffArray[currentDiffArray.Length-1] == currentDiffArray[currentDiffArray.Length-2]; //enough to check the last 2 then all are equal
+        int arrayElement = part1 ? (currentDiffArray.Length-1) : 0; //select last for part1 and first for part2
         //if equal return value to be added or subtracted for the previous bigger array (level above), otherwise continue to create one difference array with one element less
-        return isEqual ? currentArray[arrayElement] : currentArray[arrayElement] + (part1 ? 1 : -1) *calcDiff(currentArray,currentArraySize,part1);      
+        return isEqual ? currentDiffArray[arrayElement] : currentDiffArray[arrayElement] + (part1 ? 1 : -1) *calcDiff(currentDiffArray,currentDiffArray.Length,part1);      
     }
     static void Main(string[] args)
     {        
