@@ -49,7 +49,7 @@ class DAY13
     static int FindMirrowPart2(List<long> RowOrColumnList, int NbrOfRowOrColumn, int NbrOfBitShifts, int previousvalue){
             for(int i= 0; i < NbrOfRowOrColumn; i++){
                 for(int k = 0; k < NbrOfBitShifts; k++){                    
-                    RowOrColumnList[i] = RowOrColumnList[i] ^ (0x1 << k);
+                    RowOrColumnList[i] = RowOrColumnList[i] ^ (0x1 << k); //change bit number k
                     int valueRoworColumn = findMirror(RowOrColumnList,NbrOfRowOrColumn,previousvalue);                    
                     RowOrColumnList[i] = RowOrColumnList[i] ^ (0x1 << k);
                     if(valueRoworColumn != 0){
