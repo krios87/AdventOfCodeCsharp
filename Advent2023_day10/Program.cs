@@ -15,7 +15,6 @@ enum directionMove{
 
 class DAY10
 {
-
     public static directionMove getNewDirection(directionMove direction,char currentChar){
         return direction switch
         {
@@ -48,18 +47,14 @@ class DAY10
             currentDirection = getNewDirection(currentDirection,map[currentX,currentY]);
             points.Add(new (currentX,currentY)); //add point for part 2
         }
-
         return count;
-
     }
     //https://en.wikipedia.org/wiki/Shoelace_formula
     public static long calcAreaSholaceFormula(List<(int,int)> points){
-
         long area = 0;
         for(int i = 0; i < points.Count; i++){
             area += points[i].Item1*points[(i+1)%points.Count].Item2-points[(i+1)%points.Count].Item1*points[i].Item2;
-        }
-        
+        }        
         return Math.Abs(area/2);
     }
     static void Main(string[] args)
