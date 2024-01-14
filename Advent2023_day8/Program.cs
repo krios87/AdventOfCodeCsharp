@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 class MyNode{
     public string ?Name { get; set; }
@@ -16,26 +17,25 @@ class DAY8
     static void Main(string[] args)
     {        
         string[] lines = File.ReadAllLines("../../../Advent/2023_day8.txt");  
-
-        //create Nodes without pointer to other nodes
+        Regex nodePattern = new Regex("[A-Z]{3}"); //a-z repeating 3 times
         List<MyNode> allNodesList = new();
         int startIndex = 0;
         List<MyNode> ghostNodes = new();
         for(int i=2; i< lines.Length; i++){
-            allNodesList.Add(new MyNode(lines[i][..3])); //do regex instead to find nodes
-            if(lines[i][..3].Contains("AAA")){
+            string nodeName = nodePattern.Match(lines[i]).Value;
+            allNodesList.Add(new MyNode(nodeName));
+            if(nodeName.Contains("AAA")){
                 startIndex = i-2;
             }
-            if(lines[i][2] == 'A'){
+            if(nodeName[2] == 'A'){
                 ghostNodes.Add(allNodesList.Last());
             }
         }      
 
         //add pointers to Right and left nodes
         for(int i=0; i<allNodesList.Count;i++){
-            string[] TwoNodes = lines[i+2].Substring(lines[i+2].IndexOf('(') + 1,8).Split(',',StringSplitOptions.TrimEntries); 
-            string leftNode = TwoNodes[0];
-            string rightNode = TwoNodes[1];
+            string leftNode = nodePattern.Matches(lines[i+2])[1].Value;
+            string rightNode = nodePattern.Matches(lines[i+2])[2].Value;
             allNodesList.ElementAt(i).LeftNode = allNodesList.ElementAt(allNodesList.FindIndex(x => x.Name == leftNode));
             allNodesList.ElementAt(i).RightNode = allNodesList.ElementAt(allNodesList.FindIndex(x => x.Name == rightNode));            
         }        
@@ -69,9 +69,6 @@ class DAY8
         }            
         
         Console.WriteLine("part 2: ");
-        foreach (var value in stepsList)
-        {
-           Console.Write(" " + value);  //calculate LCM for these value (no library in #C, i used: https://www.calculatorsoup.com/calculators/math/lcm.php)
-        }     
+        Console.WriteLine(string.Join(", ", stepsList));//calculate LCM for these value (no library in #C, i used: https://www.calculatorsoup.com/calculators/math/lcm.php)
     }
 }
